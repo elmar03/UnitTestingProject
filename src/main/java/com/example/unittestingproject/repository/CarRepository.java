@@ -13,4 +13,6 @@ public interface CarRepository extends JpaRepository<Car,Long> {
 
     List<Car> findCarByPriceAfter(int price);
 
+    List<Car> findCarByPriceBetween(int minPrice, int maxPrice);
+
 }

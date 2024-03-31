@@ -39,4 +39,15 @@ public class CarService {
     }
 
 
+    public List<Car> byPriceBetween(int minPrice, int maxPrice){
+        return carRepository.findCarByPriceBetween(minPrice, maxPrice);
+    }
+
+
+
+
+
+
+
+
 }

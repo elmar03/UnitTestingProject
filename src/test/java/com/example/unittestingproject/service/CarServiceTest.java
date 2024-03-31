@@ -59,20 +59,29 @@ public class CarServiceTest {
     @Test
     public void priceHigherThanTest(){
         List<Car> cars = new ArrayList<>();
-
         cars.add(Car.builder().model("Chevrolet").brand("Camaro").price(50000).build());
         cars.add(Car.builder().model("Toyota").brand("Tundra").price(60000).build());
         cars.add(Car.builder().model("Lexus").brand("RX350").price(80000).build());
         cars.add(Car.builder().model("Range Rover").brand("Sport").price(100000).build());
         cars.add(Car.builder().model("Mercedes").brand("GLE").price(150000).build());
 
-
         when(carRepository.findAll()).thenReturn(cars);
         List<Car> expectedData = carService.priceHigherThan(60000);
         int price1 = expectedData.get(0).getPrice();
         Assertions.assertTrue(price1>60000);
-
-
     }
+    @Test
+    public void byPriceBetweenTest(){
+        List<Car> cars = new ArrayList<>();
+        cars.add(Car.builder().model("Chevrolet").brand("Camaro").price(50000).build());
+        cars.add(Car.builder().model("Toyota").brand("Tundra").price(60000).build());
+        cars.add(Car.builder().model("Lexus").brand("RX350").price(80000).build());
+        cars.add(Car.builder().model("Range Rover").brand("Sport").price(100000).build());
+        cars.add(Car.builder().model("Mercedes").brand("GLE").price(150000).build());
 
+        when(carRepository.findAll()).thenReturn(cars);
+        List<Car> expectedData = carService.byPriceBetween(60000,100000);
+        int price1 = expectedData.get(0).getPrice();
+        Assertions.assertEquals(price1, 80000);
+    }
 }
